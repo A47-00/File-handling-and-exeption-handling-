@@ -1,0 +1,42 @@
+```python
+def modify_file(input_filename, output_filename):
+    """Reads a file, modifies its content, and writes to a new file.
+
+    Args:
+        input_filename: The name of the input file.
+        output_filename: The name of the output file.
+    """
+    try:
+        with open(input_filename, 'r') as infile, open(output_filename, 'w') as outfile:
+            for line in infile:
+                modified_line = line.upper()  # Example modification: uppercase
+                outfile.write(modified_line)
+        print(f"File '{input_filename}' modified and saved as '{output_filename}'")
+
+    except FileNotFoundError:
+        print(f"Error: File '{input_filename}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Get filename from user
+input_file = input("Enter the input filename: ")
+output_file = input("Enter the output filename: ")
+
+modify_file(input_file, output_file)
+```
+
+**Explanation:**
+
+1.  **`modify_file(input_filename, output_filename)`:**
+    * Takes input and output filenames as arguments.
+    * Uses a `try...except` block for error handling.
+    * Opens both files using `with open(...)`, ensuring they're closed automatically.
+    * Reads each line from the input file, converts it to uppercase, and writes it to the output file.
+2.  **Error Handling:**
+    * `FileNotFoundError`: Catches the error if the input file doesn't exist.
+    * `Exception`: Catches any other potential errors during file operations.
+3.  **User Input:**
+    * Prompts the user to enter the input and output filenames.
+    * Calls the `modify_file` function to process the files.
+
+Citations: [[1]](https://github.com/MihirKatyal/WorkoutProject1)
